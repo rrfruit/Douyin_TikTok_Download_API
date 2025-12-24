@@ -33,6 +33,15 @@
 #
 # ==============================================================================
 
+import sys
+import os
+
+# 将项目目录下的 python 文件夹添加到 Python 路径中，以便找到本地安装的依赖
+project_root = os.path.dirname(os.path.abspath(__file__))
+python_lib_path = os.path.join(project_root, 'python')
+if os.path.exists(python_lib_path):
+    # 将 python 目录添加到 sys.path 的最前面，优先使用本地依赖
+    sys.path.insert(0, python_lib_path)
 
 from app.main import Host_IP, Host_Port
 import uvicorn
